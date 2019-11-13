@@ -1,6 +1,6 @@
 <template>
   <div class="title-bar">
-    <a href>热门推荐</a>
+    <a href>{{mainTitle}}</a>
     <div class="tab">
       <slot></slot>
     </div>
@@ -15,7 +15,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 @Component
 export default class TitleBar extends Vue {
-  @Prop(String) readonly title:
+  @Prop(String) readonly mainTitle: string | undefined;
 }
 </script>
 
@@ -29,22 +29,6 @@ export default class TitleBar extends Vue {
     font: 20px/28px "Microsoft Yahei", Arial;
     color: #333;
     float: left;
-  }
-  .tab {
-    float: left;
-    margin: 7px 0 0 20px;
-    color: #666666;
-    font-size: 12px;
-    a {
-      color: inherit;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    span {
-      margin: 0 10px;
-      cursor: default;
-    }
   }
 }
 .more {

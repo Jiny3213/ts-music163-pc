@@ -4,7 +4,7 @@
 + 使用基于类的vue组件
 
 ### 网易云音乐pc端首页
-See [https://music.163.com/](https://music.163.com/).
+[https://music.163.com/](https://music.163.com/).
 
 ### 网易云音乐api
-See See [https://binaryify.github.io/NeteaseCloudMusicApi](https://binaryify.github.io/NeteaseCloudMusicApi).
+[https://binaryify.github.io/NeteaseCloudMusicApi](https://binaryify.github.io/NeteaseCloudMusicApi).
