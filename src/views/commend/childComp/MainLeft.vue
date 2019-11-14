@@ -445,9 +445,13 @@ export default class MainLeft extends Vue {
 // 榜单
 .rank-list{
   .content{
-    display: flex;
+    margin: 20px 0 0 0;
+    width: 690px;
+    height: 472px;
+    overflow: hidden;
+    background: url('~@/assets/png/index_bill.png');
     .rank{
-      flex: 1;
+      float: left;
     }
   }
 }

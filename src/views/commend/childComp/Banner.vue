@@ -90,7 +90,6 @@ export default class Banner extends Vue {
       })
       .then(res => {
         this.banners = res.data.banners;
-        console.log(this.banners);
       });
   }
   mounted() {
