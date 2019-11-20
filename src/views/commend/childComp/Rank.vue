@@ -31,6 +31,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import {State} from 'vuex-class'
 
 // 榜单接口
 interface rankObj {
@@ -42,6 +43,7 @@ interface rankObj {
 @Component
 export default class Rank extends Vue {
   @Prop(Object) readonly rankData: rankObj | undefined;
+  // @State('currentSong') csong
 }
 </script>
 
@@ -131,6 +133,7 @@ export default class Rank extends Vue {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          width: 100%;
           &:hover {
             text-decoration: underline;
           }

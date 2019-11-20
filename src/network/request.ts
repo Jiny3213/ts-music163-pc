@@ -1,8 +1,8 @@
 import axios from 'axios'
 import {AxiosRequestConfig} from 'axios'
 
-// const baseURL = 'http://101.132.237.93'
-const baseURL = 'http://localhost:3000'
+const baseURL = 'http://101.132.237.93:3000'
+// const baseURL = 'http://localhost:3000'
 
 export {baseURL}
 export function request(config: AxiosRequestConfig) {

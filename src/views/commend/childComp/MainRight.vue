@@ -83,7 +83,6 @@ export default class MainRight extends Vue {
       })
       .then(res => {
         this.hotDj = res.data.data.list;
-        console.log(this.hotDj);
       });
   }
 }

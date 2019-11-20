@@ -208,6 +208,10 @@ export default class MainLeft extends Vue {
     this.getRankData(3, 'soarRank')
     this.getRankData(0, 'newRank')
     this.getRankData(2, 'originalRank')
+
+    // 测试
+    // setTimeout(() => console.log(this.soarRank), 2000);
+    
   }
 }
 </script>
@@ -336,11 +340,7 @@ export default class MainLeft extends Vue {
       position: absolute;
       width: 640px;
       left: 0;
-      &::after {
-        content: "";
-        display: block;
-        clear: both;
-      }
+      @include clearfix;
       .album {
         float: left;
         margin: 0 10px 0 0;

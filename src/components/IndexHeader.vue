@@ -5,8 +5,11 @@
 
       <!-- 主要导航区域 -->
       <ul class="main-nav">
-        <li v-for="(item, index) in mainNav" :key="index">
-          <a href @click.prevent="clickMainNav(index)">{{item}}</a>
+        <li 
+        v-for="(item, index) in mainNav" 
+        :key="index"
+        :class="{'active-main-nav': currentMainNavIndex == index}">
+          <a @click.prevent="clickMainNav(index)">{{item}}</a>
 
           <!-- 红色小三角 -->
           <div class="triangle" v-show="currentMainNavIndex == index"></div>
@@ -30,13 +33,8 @@
       <ul>
         <li v-for="(item, index) in redNav" :key="index" @click.prevent="clickRedNav(index)">
           <a href>
-            <span
-            :class="{'red-nav-active': currentRedNavIndex === index}">
-            {{item}}</span>
-            <img
-            src="~@/assets/png/white-r-icon@3x.png" 
-            class="circular-r" 
-            v-show="index === 2"/>
+            <span :class="{'red-nav-active': currentRedNavIndex === index}">{{item}}</span>
+            <img src="~@/assets/png/white-r-icon@3x.png" class="circular-r" v-show="index === 2" />
           </a>
         </li>
       </ul>
@@ -73,23 +71,13 @@ export default class IndexHeader extends Vue {
 </script>
 
 <style lang="scss" scoped>
-a:visited {
-  color: #ffffff;
-}
-
-// 组件
 .header {
   width: 100%;
   background: #242424;
 }
 
-// 主要区域
+// header的唯一元素
 .header-main {
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
   height: 70px;
   width: 1100px;
   margin: 0 auto;
@@ -116,7 +104,10 @@ a:visited {
     a {
       display: block;
       padding: 0 19px;
-      font: 14px/70px Arial, Helvetica, sans-serif;
+      cursor: pointer;
+
+      font-size: 14px;
+      line-height: 70px;
       color: #ffffff;
     }
     // 红色小三角
@@ -129,7 +120,13 @@ a:visited {
     }
   }
 }
-// 下载客户端右侧标记
+
+// 选中的主导航栏，背景为黑色
+.active-main-nav {
+  background: #000000;
+}
+
+// 下载客户端右侧标记hot
 .hot {
   display: inline-block;
   width: 28px;
@@ -139,22 +136,18 @@ a:visited {
   // 防挡
   position: relative;
 }
+
+// 右侧三个元素的整体样式
 .login,
 .creater-center,
 .search {
   float: right;
-  font: 12px Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 // 登录
 .login {
   color: #787878;
   margin: 26px 22px 0 20px;
-  &:visited {
-    color: #787878;
-  }
-  &:hover {
-    text-decoration: underline;
-  }
 }
 // 创作者中心
 .creater-center {
@@ -197,6 +190,7 @@ a:visited {
     background: url("~@/assets/png/topbar.png") -10px -108px no-repeat;
   }
 }
+
 // 红色条
 .red-bar {
   background: #c20c0c;
@@ -216,35 +210,35 @@ a:visited {
       display: block;
       a {
         padding: 0 20px;
-        font: 12px/34px Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        line-height: 34px;
         color: #ffffff;
         position: relative;
         span {
           padding: 3px 13px;
           border-radius: 10px;
         }
-        .circular-r{
-           position: absolute;
-           left: 58px;
-           top: 0px;
-           height: 8px;
-           width: 8px;
+        .circular-r {
+          position: absolute;
+          left: 58px;
+          top: 0px;
+          height: 8px;
+          width: 8px;
+        }
+        &:hover{
+          text-decoration: none;
         }
       }
-      &:hover{
-         a span{
-            background: #9b0909;
-         }
+      &:hover {
+        a span {
+          background: #9b0909;
+        }
       }
       &:first-child {
         margin-left: 177px;
       }
     }
-    &:after {
-      content: "";
-      display: block;
-      clear: both;
-    }
+    @include clearfix;
   }
 }
 // 当点击红色导航栏
