@@ -1,5 +1,6 @@
 <template>
   <dl class="rank">
+    <!-- 榜单头图 -->
     <dt>
       <a href :title="rankData.rankTitle" class="cover">
         <img :src="rankData.coverImgUrl" />
@@ -12,6 +13,7 @@
       </div>
     </dt>
 
+    <!-- 榜单1-10 -->
     <dd>
       <ol>
         <li v-for="(item, index) in rankData.rankArray" :key="index">
@@ -19,7 +21,7 @@
           <a href class="rank-name">{{item.name}}</a>
           <div class="open">
             <a href class="btn-play" title="播放"></a>
-            <a href class="btn-add" title="添加到播放列表"></a>
+            <a href class="btn-add" title="添加到播放列表" @click.prevent="add(item)"></a>
             <a href class="btn-collection" title="收藏"></a>
           </div>
         </li>
@@ -31,8 +33,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import {State} from 'vuex-class'
-
+import {State, Getter, Mutation} from 'vuex-class'
+// import {State} from '@/store/index'
 // 榜单接口
 interface rankObj {
   rankArray: any[];
@@ -43,8 +45,17 @@ interface rankObj {
 @Component
 export default class Rank extends Vue {
   @Prop(Object) readonly rankData: rankObj | undefined;
-  // @State('currentSong') csong
+  @State('songs') songs !: string[]
+  @Getter('getCurrentSong') currentSong !: number[]
+  @Mutation('addSong') addSong !: any
+  created() {
+    // console.log(this.currentSong)
+  }
+  add(songData: any):void {
+    this.addSong(songData)
+  }
 }
+
 </script>
 
 <style lang="scss" scoped>

@@ -166,6 +166,7 @@ export default class MainLeft extends Vue {
       this.currentAlbumsPage = this.currentAlbumsPage == 1 ? 2 : 1;
     }
   }
+  // 获取榜单信息，并重新封装
   getRankData(idx: number, target: 'soarRank'|'newRank'|'originalRank'):void {
     this.$axios
       .request({
@@ -180,6 +181,7 @@ export default class MainLeft extends Vue {
           coverImgUrl: res.data.playlist.coverImgUrl,
           rankTitle: res.data.playlist.name
         }
+        console.log(this[target].rankArray)
       });
   }
   created() {
@@ -209,9 +211,6 @@ export default class MainLeft extends Vue {
     this.getRankData(0, 'newRank')
     this.getRankData(2, 'originalRank')
 
-    // 测试
-    // setTimeout(() => console.log(this.soarRank), 2000);
-    
   }
 }
 </script>
